@@ -35,7 +35,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/",
             "/hello-rest",
             "/api/**",
-            "/swagger*/**",
             "/img/**"
     };
 
