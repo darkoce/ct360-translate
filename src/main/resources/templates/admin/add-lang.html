@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/header :: common-header" />
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hello-World</title>
+</head>
+<body>
+<div th:replace="common/header :: navbar" />
+<div class="content-wrapper">
+    <div class="container mt-5 vh-100">
+        <div class="col-md-6" style="margin-left: 25%; margin-top: 50px;">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Dodaj proizvod</h3>
+                </div>
+                <!-- form start -->
+                <form th:object="${language}" th:action="@{/admin/lang/add}" method="post">
+                    <div th:if="${msg} != ''" class="alert alert-danger alert-dismissible errorAlert animated bounceInRight">
+                        <p>Popunite navedena polja prema uputstvu</p>
+                    </div>
+<!--                    <!-<input type="hidden" name="id" th:value="${language.id}" />-->
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="targetLangName">* Naziv jezika na koji se prevodi</label>
+                            <input th:value="${language.targetLangName}" id="targetLangName" name="targetLangName" class="form-control" placeholder="naziv jezika" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="target">* kod jezika na koji se prevodi</label>
+                            <input th:value="${language.target}" id="target" name="target" class="form-control" placeholder="kod jezika" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="output">* prevod</label>
+                            <input th:value="${language.output}" id="output" name="output" class="form-control" placeholder="prevod hello world" required>
+                            <span class="help-block" th:if="${msg} != ''">
+                                <p class="errorLi" th:text="${msg}"></p>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary mt-3">Dodaj jezik</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="common/header :: footer"/>
+<div th:replace="common/header :: body-bottom-scripts" />
+</body>
+</html>

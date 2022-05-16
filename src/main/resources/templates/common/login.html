@@ -1,0 +1,44 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/header :: common-header" />
+
+<body style="background: #d2d6de;">
+
+<div class="container mt-5">
+    <div id="landing-header">
+        <div class="alert alert-danger animated bounceInRight" role="alert" th:if="${param.error}">Pogrešan username ili password.</div>
+        <div class="alert alert-warning  animated bounceInRight" role="alert" th:if="${param.logout}">Uspešno ste se izlogovali.</div>
+        <div style="background: #C5CCB3; padding: 10px;">
+            <h2 style="text-align: center">Dobrodošli na stranicu Translate servisa</h2>
+            <form th:action="@{/login}" method="post">
+                <div class="grid">
+                    <div class="row pl-5">
+                        <div class="g-col-6 g-start-3">
+                            <label class="text-heading">Username</label>
+                            <input name="username" id="username"
+                                   type="text" class="form-control" required="required" autofocus="autofocus"
+                                   placeholder="Username"/>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row pl-5">
+                        <div class="g-col-6 g-start-3">
+                            <label class="text-heading">Password</label>
+                            <input name="password" id="password"
+                                   type="password" class="form-control" required="required"/>
+                        </div>
+
+                        <div class="row pl-5">
+                            <div class="g-col-6 g-start-3" style="padding-top: 25px;">
+                                <button type="submit" class="btn btn-primary btn-lg">Log in</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div th:replace="common/header :: footer"/>
+<div th:replace="common/header :: body-bottom-scripts" />
+</body>
+</html>
